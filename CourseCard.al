@@ -1,23 +1,29 @@
-page 50100 "Courses List"
+page 50101 "Course Card"
 {
-    PageType = List;
+    PageType = Card;
     ApplicationArea = All;
-    UsageCategory = Lists;
+    UsageCategory = None;
     SourceTable = Courses;
-    Editable = false;
-    CardPageId = "Course Card";
 
     layout
     {
         area(Content)
         {
-            repeater(RepeaterControl)
+            group(Course)
             {
                 field("No."; Rec."No.") { }
                 field(Name; Rec.Name) { }
+            }
+            group(TrainingDetails)
+            {
+                field("Content Description"; Rec."Content Description") { }
                 field("Duration (hours)"; Rec."Duration (hours)") { }
                 field(Type; Rec.Type) { }
                 field("Language Code"; Rec."Language Code") { }
+            }
+            group(Invoicing)
+            {
+                field(Price; Rec.Price) { }
             }
         }
     }
