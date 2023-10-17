@@ -13,7 +13,14 @@ page 50101 "Course Card"
             group(Course)
             {
                 CaptionML = ENU = 'Course', ESP = 'Curso';
-                field("No."; Rec."No.") { }
+                field("No."; Rec."No.")
+                {
+                    trigger OnAssistEdit()
+                    begin
+                        if Rec.AssistEdit(xRec) then
+                            CurrPage.Update();
+                    end;
+                }
                 field(Name; Rec.Name) { }
             }
             group(TrainingDetails)
