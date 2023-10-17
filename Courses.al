@@ -39,4 +39,9 @@ table 50100 Courses
             TableRelation = Language;
         }
     }
+
+    keys
+    {
+        key(PK; "No.") { }
+    }
 }
