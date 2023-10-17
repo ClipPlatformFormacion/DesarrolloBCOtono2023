@@ -1,5 +1,6 @@
 table 50100 Courses
 {
+    CaptionML = ENU = 'Courses', ESP = 'Cursos';
     fields
     {
         field(1; "No."; Code[20])
@@ -28,9 +29,13 @@ table 50100 Courses
             OptionMembers = " ","Instructor-Lead","Video Tutorial";
             OptionCaptionML = ENU = ' ,Instructor-Lead,Video Tutorial', ESP = ' ,Guiado por profesor,Vídeo tutorial';
         }
-        field(7; Type; Enum "Course Type") { }
+        field(7; Type; Enum "Course Type")
+        {
+            CaptionML = ENU = 'Type', ESP = 'Tipo';
+        }
         field(8; "Language Code"; Code[10])
         {
+            CaptionML = ENU = 'Language Code', ESP = 'Cód. idioma';
             TableRelation = Language;
         }
     }
