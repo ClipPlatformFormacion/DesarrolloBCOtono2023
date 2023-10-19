@@ -55,6 +55,7 @@ page 50101 "Course Card"
                 RunPageLink = "Course No." = field("No.");
                 Image = ShowList;
                 Promoted = true;
+                PromotedOnly = true;
                 PromotedCategory = Process;
             }
         }

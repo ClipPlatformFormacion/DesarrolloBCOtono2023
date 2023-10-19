@@ -42,6 +42,7 @@ page 50100 "Courses List"
                 RunPageLink = "Course No." = field("No.");
                 Image = ShowList;
                 Promoted = true;
+                PromotedOnly = true;
                 PromotedCategory = Process;
             }
         }

@@ -2,7 +2,8 @@
     "al.ruleSetPath": "./.vscode/CustomRules.ruleset.json",
     "al.enableCodeAnalysis": true,
     "al.codeAnalyzers": [
-        "${CodeCop}"
+        "${CodeCop}",
+        "${UICop}"
     ],
     "CRS.OnSaveAlFileAction": "Rename",
     "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al"
