@@ -22,6 +22,13 @@ page 50100 "Courses List"
                 field("Language Code"; Rec."Language Code") { }
             }
         }
+        area(FactBoxes)
+        {
+            part(EditionsFactbox; "Course Editions Factbox")
+            {
+                SubPageLink = "Course No." = field("No.");
+            }
+        }
     }
 
     actions

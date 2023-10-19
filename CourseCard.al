@@ -23,8 +23,14 @@ page 50101 "Course Card"
                 }
                 field(Name; Rec.Name) { }
             }
+            part(EditionsFactbox; "Course Editions Factbox")
+            {
+                SubPageLink = "Course No." = field("No.");
+            }
+
             group(TrainingDetails)
             {
+                CaptionML = ENU = 'Training Details', ESP = 'Detalles formativos';
                 field("Content Description"; Rec."Content Description") { }
                 field("Duration (hours)"; Rec."Duration (hours)") { }
                 field(Type; Rec.Type) { }
@@ -32,6 +38,7 @@ page 50101 "Course Card"
             }
             group(Invoicing)
             {
+                CaptionML = ENU = 'Invoicing', ESP = 'Facturación';
                 field(Price; Rec.Price) { }
             }
         }
