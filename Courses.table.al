@@ -9,9 +9,9 @@ table 50100 Courses
 
             trigger OnValidate()
             var
+                CoursesSetup: Record "Courses Setup";
+                NoSeriesManagement: Codeunit NoSeriesManagement;
                 IsHandled: Boolean;
-                ResSetup: Record "Courses Setup";
-                NoSeriesMgt: Codeunit NoSeriesManagement;
             begin
                 IsHandled := false;
                 OnBeforeValidateNo(Rec, xRec, IsHandled);
@@ -19,8 +19,8 @@ table 50100 Courses
                     exit;
 
                 if Rec."No." <> xRec."No." then begin
-                    ResSetup.Get();
-                    NoSeriesMgt.TestManual(ResSetup."Course Nos.");
+                    CoursesSetup.Get();
+                    NoSeriesManagement.TestManual(CoursesSetup."Course Nos.");
                     "No. Series" := '';
                 end;
             end;
@@ -71,9 +71,9 @@ table 50100 Courses
 
     trigger OnInsert()
     var
+        CoursesSetup: Record "Courses Setup";
+        NoSeriesManagement: Codeunit NoSeriesManagement;
         IsHandled: Boolean;
-        ResSetup: Record "Courses Setup";
-        NoSeriesMgt: Codeunit NoSeriesManagement;
     begin
         IsHandled := false;
         OnBeforeOnInsert(Rec, IsHandled, xRec);
@@ -81,48 +81,48 @@ table 50100 Courses
             exit;
 
         if Rec."No." = '' then begin
-            ResSetup.Get();
-            ResSetup.TestField("Course Nos.");
-            NoSeriesMgt.InitSeries(ResSetup."Course Nos.", xRec."No. Series", 0D, Rec."No.", Rec."No. Series");
+            CoursesSetup.Get();
+            CoursesSetup.TestField("Course Nos.");
+            NoSeriesManagement.InitSeries(CoursesSetup."Course Nos.", xRec."No. Series", 0D, Rec."No.", Rec."No. Series");
         end;
     end;
 
-    procedure AssistEdit(OldRes: Record Courses) Result: Boolean
+    procedure AssistEdit(OldCourses: Record Courses) Result: Boolean
     var
+        Courses: Record Courses;
+        CoursesSetup: Record "Courses Setup";
+        NoSeriesManagement: Codeunit NoSeriesManagement;
         IsHandled: Boolean;
-        Res: Record Courses;
-        ResSetup: Record "Courses Setup";
-        NoSeriesMgt: Codeunit NoSeriesManagement;
     begin
         IsHandled := false;
-        OnBeforeAssistEdit(Rec, OldRes, IsHandled, Result);
+        OnBeforeAssistEdit(Rec, OldCourses, IsHandled, Result);
         if IsHandled then
             exit;
 
-        Res := Rec;
-        ResSetup.Get();
-        ResSetup.TestField("Course Nos.");
-        if NoSeriesMgt.SelectSeries(ResSetup."Course Nos.", OldRes."No. Series", Res."No. Series") then begin
-            ResSetup.Get();
-            ResSetup.TestField("Course Nos.");
-            NoSeriesMgt.SetSeries(Res."No.");
-            Rec := Res;
+        Courses := Rec;
+        CoursesSetup.Get();
+        CoursesSetup.TestField("Course Nos.");
+        if NoSeriesManagement.SelectSeries(CoursesSetup."Course Nos.", OldCourses."No. Series", Courses."No. Series") then begin
+            CoursesSetup.Get();
+            CoursesSetup.TestField("Course Nos.");
+            NoSeriesManagement.SetSeries(Courses."No.");
+            Rec := Courses;
             exit(true);
         end;
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeAssistEdit(var Resource: Record Courses; xOldRes: Record Courses; var IsHandled: Boolean; var Result: Boolean)
+    local procedure OnBeforeAssistEdit(var Courses: Record Courses; xOldCourses: Record Courses; var IsHandled: Boolean; var Result: Boolean)
     begin
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeValidateNo(var Resource: Record Courses; xResource: Record Courses; var IsHandled: Boolean)
+    local procedure OnBeforeValidateNo(var Courses: Record Courses; xCourses: Record Courses; var IsHandled: Boolean)
     begin
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeOnInsert(var Resource: Record Courses; var IsHandled: Boolean; var xResource: Record Courses)
+    local procedure OnBeforeOnInsert(var Courses: Record Courses; var IsHandled: Boolean; var xCourses: Record Courses)
     begin
     end;
 }
