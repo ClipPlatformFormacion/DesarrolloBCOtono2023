@@ -1,4 +1,5 @@
 {
+    "al.ruleSetPath": "./.vscode/CustomRules.ruleset.json",
     "al.enableCodeAnalysis": true,
     "al.codeAnalyzers": [
         "${CodeCop}"

@@ -15,6 +15,7 @@ page 50101 "Course Card"
                 CaptionML = ENU = 'Course', ESP = 'Curso';
                 field("No."; Rec."No.")
                 {
+                    ToolTipML = ENU = 'The tooltip text', ESP = 'El texto del tooltip';
                     trigger OnAssistEdit()
                     begin
                         if Rec.AssistEdit(xRec) then
