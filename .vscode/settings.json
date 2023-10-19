@@ -4,5 +4,5 @@
         "${CodeCop}"
     ],
     "CRS.OnSaveAlFileAction": "Rename",
-    "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectType>.al"
+    "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al"
 }
