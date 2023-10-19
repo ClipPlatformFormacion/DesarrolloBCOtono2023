@@ -23,4 +23,20 @@ page 50100 "Courses List"
             }
         }
     }
+
+    actions
+    {
+        area(Processing)
+        {
+            action(Editions)
+            {
+                CaptionML = ENU = 'Editions', ESP = 'Ediciones';
+                RunObject = page "Course Editions";
+                RunPageLink = "Course No." = field("No.");
+                Image = ShowList;
+                Promoted = true;
+                PromotedCategory = Process;
+            }
+        }
+    }
 }
