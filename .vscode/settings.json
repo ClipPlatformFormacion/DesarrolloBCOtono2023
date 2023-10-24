@@ -8,5 +8,7 @@
         "${AppSourceCop}"
     ],
     "CRS.OnSaveAlFileAction": "Rename",
-    "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al"
+    "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.RemovePrefixFromFilename": true,
+    "CRS.ObjectNamePrefix": "CLIP "
 }

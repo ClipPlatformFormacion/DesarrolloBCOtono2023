@@ -1,6 +1,6 @@
-table 50100 Courses
+table 50100 "CLIP Course"
 {
-    Caption = 'Courses', Comment = 'ESP="Cursos"';
+    Caption = 'Course', Comment = 'ESP="Curso"';
     DataClassification = CustomerContent;
 
     fields
@@ -11,7 +11,7 @@ table 50100 Courses
 
             trigger OnValidate()
             var
-                CoursesSetup: Record "Courses Setup";
+                CoursesSetup: Record "CLIP Courses Setup";
                 NoSeriesManagement: Codeunit NoSeriesManagement;
                 IsHandled: Boolean;
             begin
@@ -49,7 +49,7 @@ table 50100 Courses
             OptionMembers = " ","Instructor-Lead","Video Tutorial";
             OptionCaption = ' ,Instructor-Lead,Video Tutorial', Comment = 'ESP=" ,Guiado por profesor,Vídeo tutorial"';
         }
-        field(7; Type; Enum "Course Type")
+        field(7; Type; Enum "CLIP Course Type")
         {
             Caption = 'Type', Comment = 'ESP="Tipo"';
         }
@@ -73,7 +73,7 @@ table 50100 Courses
 
     trigger OnInsert()
     var
-        CoursesSetup: Record "Courses Setup";
+        CoursesSetup: Record "CLIP Courses Setup";
         NoSeriesManagement: Codeunit NoSeriesManagement;
         IsHandled: Boolean;
     begin
@@ -89,10 +89,10 @@ table 50100 Courses
         end;
     end;
 
-    procedure AssistEdit(OldCourses: Record Courses) Result: Boolean
+    procedure AssistEdit(OldCourses: Record "CLIP Course") Result: Boolean
     var
-        Courses: Record Courses;
-        CoursesSetup: Record "Courses Setup";
+        Courses: Record "CLIP Course";
+        CoursesSetup: Record "CLIP Courses Setup";
         NoSeriesManagement: Codeunit NoSeriesManagement;
         IsHandled: Boolean;
     begin
@@ -114,17 +114,17 @@ table 50100 Courses
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeAssistEdit(var Courses: Record Courses; xOldCourses: Record Courses; var IsHandled: Boolean; var Result: Boolean)
+    local procedure OnBeforeAssistEdit(var Courses: Record "CLIP Course"; xOldCourses: Record "CLIP Course"; var IsHandled: Boolean; var Result: Boolean)
     begin
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeValidateNo(var Courses: Record Courses; xCourses: Record Courses; var IsHandled: Boolean)
+    local procedure OnBeforeValidateNo(var Courses: Record "CLIP Course"; xCourses: Record "CLIP Course"; var IsHandled: Boolean)
     begin
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeOnInsert(var Courses: Record Courses; var IsHandled: Boolean; var xCourses: Record Courses)
+    local procedure OnBeforeOnInsert(var Courses: Record "CLIP Course"; var IsHandled: Boolean; var xCourses: Record "CLIP Course")
     begin
     end;
 }

@@ -1,17 +1,17 @@
-permissionset 50100 "Courses - All"
+permissionset 50100 "CLIP Courses - All"
 {
     Caption = 'Courses - All permissions', Comment = 'ESP="Cursos - Todos los permisos"';
     Assignable = true;
     Permissions =
-        tabledata "Courses Setup" = RIMD,
-        tabledata "Courses" = RIMD,
-        tabledata "Course Edition" = RIMD,
-        table "Course Edition" = X,
-        table Courses = X,
-        table "Courses Setup" = X,
-        page "Course Card" = X,
-        page "Course Editions" = X,
-        page "Course Editions Factbox" = X,
-        page "Courses List" = X,
-        page "Courses Setup" = X;
+        tabledata "CLIP Courses Setup" = RIMD,
+        tabledata "CLIP Course" = RIMD,
+        tabledata "CLIP Course Edition" = RIMD,
+        table "CLIP Course Edition" = X,
+        table "CLIP Course" = X,
+        table "CLIP Courses Setup" = X,
+        page "CLIP Course Card" = X,
+        page "CLIP Course Editions" = X,
+        page "CLIP Course Editions Factbox" = X,
+        page "CLIP Courses List" = X,
+        page "CLIP Courses Setup" = X;
 }
