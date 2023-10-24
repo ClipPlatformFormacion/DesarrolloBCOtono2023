@@ -1,7 +1,7 @@
 page 50102 "CLIP Courses Setup"
 {
     AccessByPermission = TableData "CLIP Course" = R;
-    ApplicationArea = Jobs;
+    ApplicationArea = All;
     Caption = 'Courses Setup', Comment = 'ESP="Config. cursos"';
     DeleteAllowed = false;
     InsertAllowed = false;
@@ -18,7 +18,6 @@ page 50102 "CLIP Courses Setup"
                 Caption = 'Numbering', Comment = 'ESP="Numeración"';
                 field("Course Nos."; Rec."Course Nos.")
                 {
-                    ApplicationArea = Jobs;
                     ToolTip = 'Specifies the number series code you can use to assign numbers to courses.', Comment = 'ESP="Especifica el código de serie numérica que se puede utilizar para asignar números a los cursos."';
                 }
             }
