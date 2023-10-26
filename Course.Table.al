@@ -64,6 +64,25 @@ table 50100 "CLIP Course"
             Editable = false;
             TableRelation = "No. Series";
         }
+        field(51; "Gen. Prod. Posting Group"; Code[20])
+        {
+            Caption = 'Gen. Prod. Posting Group', Comment = 'ESP="Grupo contable prod. gen."';
+            TableRelation = "Gen. Product Posting Group";
+
+            trigger OnValidate()
+            var
+                GenProductPostingGroup: Record "Gen. Product Posting Group";
+            begin
+                if xRec."Gen. Prod. Posting Group" <> "Gen. Prod. Posting Group" then
+                    if GenProductPostingGroup.ValidateVatProdPostingGroup(GenProductPostingGroup, "Gen. Prod. Posting Group") then
+                        Validate("VAT Prod. Posting Group", GenProductPostingGroup."Def. VAT Prod. Posting Group");
+            end;
+        }
+        field(58; "VAT Prod. Posting Group"; Code[20])
+        {
+            Caption = 'VAT Prod. Posting Group', Comment = 'ESP="Grupo contable IVA prod."';
+            TableRelation = "VAT Product Posting Group";
+        }
     }
 
     keys
