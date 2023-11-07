@@ -90,6 +90,12 @@ table 50100 "CLIP Course"
         key(PK; "No.") { }
     }
 
+    fieldgroups
+    {
+        fieldgroup(DropDown; "No.", Name, Type, "Duration (hours)", "Language Code") { }
+        fieldgroup(Brick; "No.", Name, Price) { }
+    }
+
     trigger OnInsert()
     var
         CoursesSetup: Record "CLIP Courses Setup";
