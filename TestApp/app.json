@@ -1,0 +1,32 @@
+{
+  "id": "edaff11d-0f08-4e7b-8109-b81ea784a3dd",
+  "name": "TestApp",
+  "publisher": "Default publisher",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "22.0.0.0",
+  "idRanges": [
+    {
+      "from": 60000,
+      "to": 60049
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "11.0",
+  "features": [
+    "NoImplicitWith","TranslationFile"
+  ]
+}

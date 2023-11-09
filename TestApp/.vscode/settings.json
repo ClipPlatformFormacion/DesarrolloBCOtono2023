@@ -1,0 +1,16 @@
+{
+    "al.ruleSetPath": "./.vscode/CustomRules.ruleset.json",
+    "al.enableCodeAnalysis": true,
+    "al.codeAnalyzers": [
+        "${CodeCop}",
+        "${UICop}",
+        "${PerTenantExtensionCop}",
+        "${AppSourceCop}"
+    ],
+    "CRS.OnSaveAlFileAction": "Rename",
+    "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.RemovePrefixFromFilename": true,
+    "CRS.ObjectNamePrefix": "CLIP ",
+    "CRS.ExtensionObjectNamePattern": "<Prefix><BaseName>"
+}
