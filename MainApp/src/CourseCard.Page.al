@@ -62,5 +62,25 @@ page 50101 "CLIP Course Card"
                 PromotedCategory = Process;
             }
         }
+        area(Navigation)
+        {
+            group(History)
+            {
+                Caption = 'History';
+                Image = History;
+                action("Ledger E&ntries")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Ledger E&ntries', Comment = 'ESP="Movimientos"';
+                    Image = ResourceLedger;
+                    RunObject = Page "CLIP Course Ledger Entries";
+                    RunPageLink = "Course No." = FIELD("No.");
+                    RunPageView = sorting("Course No.")
+                                  order(descending);
+                    ShortCutKey = 'Ctrl+F7';
+                    ToolTip = 'View the history of transactions that have been posted for the selected record.';
+                }
+            }
+        }
     }
 }
