@@ -70,6 +70,8 @@ codeunit 60000 "CLIP Courses - Test"
 
         // [Then] La línea de venta tiene la Descripción, Grupos Contables y Precio correctos
         LibraryAssert.AreEqual(Course.Name, SalesLine.Description, 'La línea de venta no tiene la descripción correcta');
-        // TODO: Comprobaciones de grupos contables y precio
+        LibraryAssert.AreEqual(Course.Price, SalesLine."Unit Price", 'La línea de venta no tiene el precio correcto');
+        LibraryAssert.AreEqual(Course."Gen. Prod. Posting Group", SalesLine."Gen. Prod. Posting Group", 'Grupo contable incorrecto');
+        LibraryAssert.AreEqual(Course."VAT Prod. Posting Group", SalesLine."VAT Prod. Posting Group", 'Grupo de IVA incorrecto');
     end;
 }
