@@ -265,11 +265,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table CLIP Courses Setup - Field Primary Key - Property Caption</note>
           <target>Clave primaria</target>
         </trans-unit>
-        <trans-unit id="Codeunit 438810220 - Method 4153435067 - NamedType 425741823" size-unit="char" translate="yes" xml:space="preserve">
-          <source>With this sale.....</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Con esta venta se superará el número máximo de alumnos permitido para este curso"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CLIP Course Sales Management - Method OnAfterValidate_Quantity_SalesLine_CheckMaxStudents - NamedType MaxStudentsMessage</note>
-          <target>Con esta venta se superará el número máximo de alumnos permitido para este curso</target>
+        <trans-unit id="Codeunit 438810220 - Method 4153435067 - NamedType 426040769" size-unit="char" translate="yes" xml:space="preserve">
+          <source>With this sale (%1) %2.....</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Con esta venta se superará el número máximo de alumnos permitido (%1) para este curso (ventas previas: %2)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CLIP Course Sales Management - Method OnAfterValidate_Quantity_SalesLine_CheckMaxStudents - NamedType MaxStudentsMsg</note>
+          <target>Con esta venta se superará el número máximo de alumnos permitido (%1) para este curso (ventas previas: %2)</target>
         </trans-unit>
         <trans-unit id="Page 3927749657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Course Card</source>
