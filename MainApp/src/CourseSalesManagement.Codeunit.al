@@ -103,10 +103,11 @@ codeunit 50100 "CLIP Course Sales Management"
         if Rec.Quantity = 0 then
             exit;
 
+        CourseLedgerEntry.SetRange("Course No.", Rec."No.");
+        CourseLedgerEntry.SetRange("Course Edition", Rec."CLIP Course Edition");
         if CourseLedgerEntry.FindSet() then
             repeat
-                if (CourseLedgerEntry."Course No." = Rec."No.") and (CourseLedgerEntry."Course Edition" = Rec."CLIP Course Edition") then
-                    PreviousSales := PreviousSales + CourseLedgerEntry.Quantity;
+                PreviousSales := PreviousSales + CourseLedgerEntry.Quantity;
             until CourseLedgerEntry.Next() = 0;
 
         CourseEdition.Get(Rec."No.", Rec."CLIP Course Edition");
