@@ -91,6 +91,8 @@ codeunit 50100 "CLIP Course Sales Management"
         CourseLedgerEntry: Record "CLIP Course Ledger Entry";
         CourseEdition: Record "CLIP Course Edition";
         PreviousSales: Decimal;
+        // MaxStudentsMessage: TextConst ENU = 'With this sale.....', ESP = 'Con esta venta se superará el número máximo de alumnos permitido para este curso';
+        MaxStudentsMsg: Label 'With this sale.....', Comment = 'ESP="Con esta venta se superará el número máximo de alumnos permitido para este curso"';
     begin
         if Rec.Type <> Rec.Type::"CLIP Course" then
             exit;
@@ -110,6 +112,6 @@ codeunit 50100 "CLIP Course Sales Management"
         CourseEdition.Get(Rec."No.", Rec."CLIP Course Edition");
 
         if (PreviousSales + Rec.Quantity) > CourseEdition."Max. Students" then
-            Message('Con esta venta se superará el número máximo de alumnos permitido para este curso');
+            Message(MaxStudentsMsg);
     end;
 }
