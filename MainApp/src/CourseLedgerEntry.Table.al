@@ -1,8 +1,8 @@
 table 50103 "CLIP Course Ledger Entry"
 {
     Caption = 'Course Ledger Entry', Comment = 'ESP="Mov. curso"';
-    DrillDownPageID = "Resource Ledger Entries";
-    LookupPageID = "Resource Ledger Entries";
+    DrillDownPageID = "CLIP Course Ledger Entries";
+    // LookupPageID = "Resource Ledger Entries";
     DataClassification = CustomerContent;
 
     fields

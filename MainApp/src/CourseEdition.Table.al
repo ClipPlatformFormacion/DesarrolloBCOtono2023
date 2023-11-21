@@ -22,6 +22,15 @@ table 50102 "CLIP Course Edition"
         {
             Caption = 'Max. Students', Comment = 'ESP="Nº máx. alumnos"';
         }
+        field(5; "Sales (Qty.)"; Decimal)
+        {
+            Caption = 'Sales (Qty.)', comment = 'ESP="Ventas (cdad.)"';
+            FieldClass = FlowField;
+            CalcFormula = sum("CLIP Course Ledger Entry".Quantity where(
+                                                                "Course No." = field("Course No."),
+                                                                "Course Edition" = field(Edition)
+                                                                ));
+        }
     }
 
     keys
