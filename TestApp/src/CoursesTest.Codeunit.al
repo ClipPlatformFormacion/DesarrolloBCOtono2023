@@ -160,4 +160,78 @@ codeunit 60000 "CLIP Courses - Test"
         LibraryAssert.AreEqual(SalesHeader."Document Date", CourseLedgerEntry."Document Date", 'Dato incorrecto');
         LibraryAssert.AreEqual(SalesHeader."External Document No.", CourseLedgerEntry."External Document No.", 'Dato incorrecto');
     end;
+
+    [Test]
+    [HandlerFunctions('CourseEditionMaxStudentsMessage')]
+    procedure SelectingAnEditionOnASalesLineP004()
+    var
+        Course: Record "CLIP Course";
+        CourseEdition: Record "CLIP Course Edition";
+        SalesHeader: Record "Sales Header";
+        SalesLine: Record "Sales Line";
+        LibrarySales: Codeunit "Library - Sales";
+        LibraryAssert: Codeunit "Library Assert";
+        LibraryCourse: Codeunit "CLIP Library - Course";
+    begin
+        // [Scenario] Si una edición de un curso está llena (se ha vendido tanta cantidad como número máximo de alumnos)
+        //              y el usuario pretende realizar una nueva venta, el sistema debe mostrarle una notificación
+
+        // [Given] Un curso y una edición con 5 alumnos como máximo
+        LibraryCourse.CreateCourse(Course);
+        CourseEdition := LibraryCourse.CreateEdition(Course);
+        CourseEdition."Max. Students" := 5;
+        CourseEdition.Modify();
+        //          Facturas del curso y edición para 4 alumnos
+        LibrarySales.CreateSalesHeader(SalesHeader, "Sales Document Type"::Order, '');
+        LibrarySales.CreateSalesLineSimple(SalesLine, SalesHeader);
+        SalesLine.Validate(Type, SalesLine.Type::"CLIP Course");
+        SalesLine.Validate("No.", Course."No.");
+        SalesLine.Validate("CLIP Course Edition", CourseEdition.Edition);
+        SalesLine.Validate(Quantity, 1);
+        SalesLine.Modify(true);
+        LibrarySales.PostSalesDocument(SalesHeader, true, true);
+
+        LibrarySales.CreateSalesHeader(SalesHeader, "Sales Document Type"::Order, '');
+        LibrarySales.CreateSalesLineSimple(SalesLine, SalesHeader);
+        SalesLine.Validate(Type, SalesLine.Type::"CLIP Course");
+        SalesLine.Validate("No.", Course."No.");
+        SalesLine.Validate("CLIP Course Edition", CourseEdition.Edition);
+        SalesLine.Validate(Quantity, 3);
+        SalesLine.Modify(true);
+        LibrarySales.PostSalesDocument(SalesHeader, true, true);
+
+        //          Un pedido de venta para el curso y edición
+        LibrarySales.CreateSalesHeader(SalesHeader, "Sales Document Type"::Order, '');
+        LibrarySales.CreateSalesLineSimple(SalesLine, SalesHeader);
+        SalesLine.Validate(Type, SalesLine.Type::"CLIP Course");
+        SalesLine.Validate("No.", Course."No.");
+        SalesLine.Validate("CLIP Course Edition", CourseEdition.Edition);
+
+        // [When] Se selecciona cantidad 2 en el pedido de venta
+        SalesLine.Validate(Quantity, 2);
+        SalesLine.Modify(true);
+
+        // [Then] Se le muestra notificación al usuario
+    end;
+
+    [MessageHandler]
+    procedure CourseEditionMaxStudentsMessage(Message: Text[1024])
+    begin
+
+    end;
+
+    [Test]
+    procedure SelectingAnEditionOnASalesLineP005()
+    begin
+        // [Scenario] Si una edición de un curso no está llena (se ha vendido tanta cantidad como número máximo de alumnos)
+        //              y el usuario pretende realizar una nueva venta, el sistema no debe mostrarle una notificación
+
+        // [Given] Un curso y una edición con 5 alumnos como máximo
+        //          Facturas del curso y edición para 4 alumnos
+        //          Un pedido de venta para el curso y edición
+
+        // [When] Se selecciona cantidad 1 en el pedido de venta
+
+        // [Then] No se le muestra notificación al usuario
+    end;
 }

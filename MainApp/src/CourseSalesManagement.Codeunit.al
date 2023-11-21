@@ -84,4 +84,32 @@ codeunit 50100 "CLIP Course Sales Management"
     local procedure OnAfterPostCourseJournalLine(SalesHeader: Record "Sales Header"; SalesLine: Record "Sales Line"; CourseJournalLine: Record "CLIP Course Journal Line")
     begin
     end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", OnAfterValidateEvent, Quantity, false, false)]
+    local procedure OnAfterValidate_Quantity_SalesLine_CheckMaxStudents(var Rec: Record "Sales Line")
+    var
+        CourseLedgerEntry: Record "CLIP Course Ledger Entry";
+        CourseEdition: Record "CLIP Course Edition";
+        PreviousSales: Decimal;
+    begin
+        if Rec.Type <> Rec.Type::"CLIP Course" then
+            exit;
+        if Rec."No." = '' then
+            exit;
+        if Rec."CLIP Course Edition" = '' then
+            exit;
+        if Rec.Quantity = 0 then
+            exit;
+
+        if CourseLedgerEntry.FindSet() then
+            repeat
+                if (CourseLedgerEntry."Course No." = Rec."No.") and (CourseLedgerEntry."Course Edition" = Rec."CLIP Course Edition") then
+                    PreviousSales := PreviousSales + CourseLedgerEntry.Quantity;
+            until CourseLedgerEntry.Next() = 0;
+
+        CourseEdition.Get(Rec."No.", Rec."CLIP Course Edition");
+
+        if (PreviousSales + Rec.Quantity) > CourseEdition."Max. Students" then
+            Message('Con esta venta se superará el número máximo de alumnos permitido para este curso');
+    end;
 }
