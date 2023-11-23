@@ -104,7 +104,7 @@ table 50104 "CLIP Course Journal Line"
             begin
                 TestField(Quantity);
                 GetGLSetup();
-                "Unit Price" := Round("Total Price" / Quantity, GLSetup."Unit-Amount Rounding Precision");
+                "Unit Price" := Round("Total Price" / Quantity, GeneralLedgerSetup."Unit-Amount Rounding Precision");
             end;
         }
         // field(18; "Shortcut Dimension 1 Code"; Code[20])
@@ -231,12 +231,12 @@ table 50104 "CLIP Course Journal Line"
     end;
 
     var
-        ResJnlTemplate: Record "Res. Journal Template";
-        ResJnlBatch: Record "Res. Journal Batch";
-        ResJnlLine: Record "Res. Journal Line";
-        GLSetup: Record "General Ledger Setup";
-        NoSeriesMgt: Codeunit NoSeriesManagement;
-        DimMgt: Codeunit DimensionManagement;
+        // ResJnlTemplate: Record "Res. Journal Template";
+        // ResJnlBatch: Record "Res. Journal Batch";
+        // ResJnlLine: Record "Res. Journal Line";
+        GeneralLedgerSetup: Record "General Ledger Setup";
+        // NoSeriesMgt: Codeunit NoSeriesManagement;
+        // DimMgt: Codeunit DimensionManagement;
         GLSetupRead: Boolean;
 
     procedure EmptyLine(): Boolean
@@ -369,7 +369,7 @@ table 50104 "CLIP Course Journal Line"
     local procedure GetGLSetup()
     begin
         if not GLSetupRead then
-            GLSetup.Get();
+            GeneralLedgerSetup.Get();
         GLSetupRead := true;
     end;
 

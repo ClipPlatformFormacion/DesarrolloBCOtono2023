@@ -14,9 +14,7 @@ codeunit 50101 "CLIP Course Journal-Post Line"
         GeneralLedgerSetup: Record "General Ledger Setup";
         CourseJournalLineGlobal: Record "CLIP Course Journal Line";
         CourseLedgerEntry: Record "CLIP Course Ledger Entry";
-        Course: Record "CLIP Course";
         // ResourceRegister: Record "Resource Register";
-        ResJnlCheckLine: Codeunit "Res. Jnl.-Check Line";
         NextEntryNo: Integer;
         GLSetupRead: Boolean;
 
@@ -34,44 +32,42 @@ codeunit 50101 "CLIP Course Journal-Post Line"
         IsHandled := false;
         OnBeforePostCourseJournalLine(CourseJournalLineGlobal, IsHandled);
         if not IsHandled then
-            with CourseJournalLineGlobal do begin
-                if EmptyLine() then
-                    exit;
+            if CourseJournalLineGlobal.EmptyLine() then
+                exit;
 
-                // ResJnlCheckLine.RunCheck(CourseJournalLineGlobal);
-                // OnCodeOnAfterRunCheck(CourseJournalLineGlobal);
+        // ResJnlCheckLine.RunCheck(CourseJournalLineGlobal);
+        // OnCodeOnAfterRunCheck(CourseJournalLineGlobal);
 
-                if NextEntryNo = 0 then begin
-                    CourseLedgerEntry.LockTable();
-                    NextEntryNo := CourseLedgerEntry.GetLastEntryNo() + 1;
-                end;
+        if NextEntryNo = 0 then begin
+            CourseLedgerEntry.LockTable();
+            NextEntryNo := CourseLedgerEntry.GetLastEntryNo() + 1;
+        end;
 
-                if "Document Date" = 0D then
-                    "Document Date" := "Posting Date";
+        if CourseJournalLineGlobal."Document Date" = 0D then
+            CourseJournalLineGlobal."Document Date" := CourseJournalLineGlobal."Posting Date";
 
-                // if ResourceRegister."No." = 0 then begin
-                //     ResourceRegister.LockTable();
-                //     if (not ResourceRegister.FindLast()) or (ResourceRegister."To Entry No." <> 0) then
-                //         InsertRegister(CourseJournalLineGlobal);
-                // end;
-                // ResourceRegister."To Entry No." := NextEntryNo;
-                // OnBeforeResourceRegisterModify(CourseJournalLineGlobal, ResourceRegister);
-                // ResourceRegister.Modify();
+        // if ResourceRegister."No." = 0 then begin
+        //     ResourceRegister.LockTable();
+        //     if (not ResourceRegister.FindLast()) or (ResourceRegister."To Entry No." <> 0) then
+        //         InsertRegister(CourseJournalLineGlobal);
+        // end;
+        // ResourceRegister."To Entry No." := NextEntryNo;
+        // OnBeforeResourceRegisterModify(CourseJournalLineGlobal, ResourceRegister);
+        // ResourceRegister.Modify();
 
-                CourseLedgerEntry.Init();
-                CourseLedgerEntry.CopyFromCourseJournalLine(CourseJournalLineGlobal);
+        CourseLedgerEntry.Init();
+        CourseLedgerEntry.CopyFromCourseJournalLine(CourseJournalLineGlobal);
 
-                GetGLSetup();
-                CourseLedgerEntry."Total Price" := Round(CourseLedgerEntry."Total Price");
+        GetGLSetup();
+        CourseLedgerEntry."Total Price" := Round(CourseLedgerEntry."Total Price");
 
-                CourseLedgerEntry."Entry No." := NextEntryNo;
+        CourseLedgerEntry."Entry No." := NextEntryNo;
 
-                OnBeforeCourseLedgerEntryInsert(CourseLedgerEntry, CourseJournalLineGlobal);
+        OnBeforeCourseLedgerEntryInsert(CourseLedgerEntry, CourseJournalLineGlobal);
 
-                CourseLedgerEntry.Insert(true);
+        CourseLedgerEntry.Insert(true);
 
-                NextEntryNo := NextEntryNo + 1;
-            end;
+        NextEntryNo := NextEntryNo + 1;
 
         OnAfterPostCourseJournalLine(CourseJournalLineGlobal, CourseLedgerEntry);
     end;

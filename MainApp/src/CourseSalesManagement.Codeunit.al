@@ -46,32 +46,30 @@ codeunit 50100 "CLIP Course Sales Management"
     local procedure PostCourseJournalLine(var SalesHeader: Record "Sales Header"; var SalesLine: Record "Sales Line"; GenJnlLineDocNo: Code[20]; GenJnlLineExtDocNo: Code[35]; SrcCode: Code[10])
     var
         CourseJournalLine: Record "CLIP Course Journal Line";
-        ResJnlPostLine: Codeunit "CLIP Course Journal-Post Line";
+        CourseJournalPostLine: Codeunit "CLIP Course Journal-Post Line";
         IsHandled: Boolean;
     begin
         IsHandled := false;
-        OnBeforePostCourseJournalLine(SalesHeader, SalesLine, IsHandled, GenJnlLineDocNo, GenJnlLineExtDocNo, SrcCode, ResJnlPostLine);
+        OnBeforePostCourseJournalLine(SalesHeader, SalesLine, IsHandled, GenJnlLineDocNo, GenJnlLineExtDocNo, SrcCode, CourseJournalPostLine);
         if IsHandled then
             exit;
 
         if SalesLine."Qty. to Invoice" = 0 then
             exit;
 
-        with CourseJournalLine do begin
-            Init();
-            CopyFromSalesHeader(SalesHeader);
-            CopyDocumentFields(GenJnlLineDocNo, GenJnlLineExtDocNo, SrcCode, SalesHeader."Posting No. Series");
-            CopyFromSalesLine(SalesLine);
-            OnPostCourseJournalLineOnAfterInit(CourseJournalLine, SalesLine);
+        CourseJournalLine.Init();
+        CourseJournalLine.CopyFromSalesHeader(SalesHeader);
+        CourseJournalLine.CopyDocumentFields(GenJnlLineDocNo, GenJnlLineExtDocNo, SrcCode, SalesHeader."Posting No. Series");
+        CourseJournalLine.CopyFromSalesLine(SalesLine);
+        OnPostCourseJournalLineOnAfterInit(CourseJournalLine, SalesLine);
 
-            ResJnlPostLine.RunWithCheck(CourseJournalLine);
-        end;
+        CourseJournalPostLine.RunWithCheck(CourseJournalLine);
 
         OnAfterPostCourseJournalLine(SalesHeader, SalesLine, CourseJournalLine);
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforePostCourseJournalLine(var SalesHeader: Record "Sales Header"; var SalesLine: Record "Sales Line"; var IsHandled: Boolean; DocNo: Code[20]; ExtDocNo: Code[35]; SourceCode: Code[10]; var ResJnlPostLine: Codeunit "CLIP Course Journal-Post Line")
+    local procedure OnBeforePostCourseJournalLine(var SalesHeader: Record "Sales Header"; var SalesLine: Record "Sales Line"; var IsHandled: Boolean; DocNo: Code[20]; ExtDocNo: Code[35]; SourceCode: Code[10]; var CourseJournalPostLine: Codeunit "CLIP Course Journal-Post Line")
     begin
     end;
 
