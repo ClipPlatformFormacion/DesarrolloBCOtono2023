@@ -23,6 +23,7 @@ table 50102 "CLIP Course Edition"
             Caption = 'Max. Students', Comment = 'ESP="Nº máx. alumnos"';
             BlankNumbers = BlankZero;
         }
+#pragma warning disable AA0232
         field(5; "Sales (Qty.)"; Decimal)
         {
             Caption = 'Sales (Qty.)', comment = 'ESP="Ventas (cdad.)"';
@@ -35,6 +36,7 @@ table 50102 "CLIP Course Edition"
             Editable = false;
             BlankNumbers = BlankZero;
         }
+#pragma warning restore
         field(6; "Date Filter"; Date)
         {
             Caption = 'Date Filter', comment = 'ESP="Filtro fecha"';

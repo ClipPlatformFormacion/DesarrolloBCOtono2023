@@ -6,7 +6,9 @@ page 50105 "CLIP Course Ledger Entries"
     Editable = false;
     PageType = List;
     SourceTable = "CLIP Course Ledger Entry";
+#pragma warning disable AL0254
     SourceTableView = sorting("Course No.", "Posting Date")
+#pragma warning restore
                       order(descending);
     UsageCategory = History;
 

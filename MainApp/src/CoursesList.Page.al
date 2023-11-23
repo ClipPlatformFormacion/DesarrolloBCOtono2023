@@ -60,7 +60,9 @@ page 50100 "CLIP Courses List"
                     Image = ResourceLedger;
                     RunObject = Page "CLIP Course Ledger Entries";
                     RunPageLink = "Course No." = FIELD("No.");
+#pragma warning disable AL0254
                     RunPageView = sorting("Course No.")
+#pragma warning restore
                                   order(descending);
                     ShortCutKey = 'Ctrl+F7';
                     ToolTip = 'View the history of transactions that have been posted for the selected record.';
