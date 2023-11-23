@@ -86,9 +86,7 @@ codeunit 50100 "CLIP Course Sales Management"
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", OnAfterValidateEvent, Quantity, false, false)]
     local procedure OnAfterValidate_Quantity_SalesLine_CheckMaxStudents(var Rec: Record "Sales Line")
     var
-        CourseLedgerEntry: Record "CLIP Course Ledger Entry";
         CourseEdition: Record "CLIP Course Edition";
-        PreviousSales: Decimal;
         // MaxStudentsMessage: TextConst ENU = 'With this sale.....', ESP = 'Con esta venta se superará el número máximo de alumnos permitido para este curso';
         MaxStudentsMsg: Label 'With this sale (%1) %2.....', Comment = 'ESP="Con esta venta se superará el número máximo de alumnos permitido (%1) para este curso (ventas previas: %2)"';
     begin
@@ -101,15 +99,11 @@ codeunit 50100 "CLIP Course Sales Management"
         if Rec.Quantity = 0 then
             exit;
 
-        CourseLedgerEntry.SetRange("Course No.", Rec."No.");
-        CourseLedgerEntry.SetRange("Course Edition", Rec."CLIP Course Edition");
-        CourseLedgerEntry.CalcSums(Quantity);
-        PreviousSales := CourseLedgerEntry.Quantity;
-
         CourseEdition.SetLoadFields("Max. Students");
         CourseEdition.Get(Rec."No.", Rec."CLIP Course Edition");
+        CourseEdition.CalcFields("Sales (Qty.)");
 
-        if (PreviousSales + Rec.Quantity) > CourseEdition."Max. Students" then
-            Message(MaxStudentsMsg, CourseEdition."Max. Students", PreviousSales);
+        if (CourseEdition."Sales (Qty.)" + Rec.Quantity) > CourseEdition."Max. Students" then
+            Message(MaxStudentsMsg, CourseEdition."Max. Students", CourseEdition."Sales (Qty.)");
     end;
 }
