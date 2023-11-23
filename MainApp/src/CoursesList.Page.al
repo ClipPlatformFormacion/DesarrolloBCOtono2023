@@ -46,6 +46,12 @@ page 50100 "CLIP Courses List"
                 PromotedOnly = true;
                 PromotedCategory = Process;
             }
+            action(UpdatePrices)
+            {
+                Caption = 'Update prices', comment = 'ESP="Actualizar precios"';
+                RunObject = report "CLIP Update Course Price";
+                Image = UpdateUnitCost;
+            }
         }
         area(Navigation)
         {
