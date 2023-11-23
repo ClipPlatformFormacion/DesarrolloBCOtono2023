@@ -34,6 +34,18 @@ page 50100 "CLIP Courses List"
 
     actions
     {
+        area(Reporting)
+        {
+            action(CourseList)
+            {
+                Caption = 'Course List', comment = 'ESP="Lista cursos"';
+                RunObject = report "CLIP Course List";
+                Image = Print;
+                Promoted = true;
+                PromotedOnly = true;
+                PromotedCategory = Report;
+            }
+        }
         area(Processing)
         {
             action(Editions)

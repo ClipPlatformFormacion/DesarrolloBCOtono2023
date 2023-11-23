@@ -457,6 +457,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page CLIP Courses List - Action UpdatePrices - Property Caption</note>
           <target>Actualizar precios</target>
         </trans-unit>
+        <trans-unit id="Page 1407497502 - Action 2634244209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Course List</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista cursos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CLIP Courses List - Action CourseList - Property Caption</note>
+          <target>Lista cursos</target>
+        </trans-unit>
         <trans-unit id="Page 1177735025 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Courses Setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Config. cursos"</note>
@@ -474,6 +480,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Especifica el código de serie numérica que se puede utilizar para asignar números a los cursos."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CLIP Courses Setup - Control Course Nos. - Property ToolTip</note>
           <target>Especifica el código de serie numérica que se puede utilizar para asignar números a los cursos.</target>
+        </trans-unit>
+        <trans-unit id="Report 2667201611 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Course List</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista cursos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report CLIP Course List - Property Caption</note>
+          <target>Lista cursos</target>
         </trans-unit>
         <trans-unit id="Report 120358521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update Course Price</source>
