@@ -38,10 +38,12 @@ table 50100 "CLIP Course"
         field(4; "Duration (hours)"; Integer)
         {
             Caption = 'Duration (hours)', Comment = 'ESP="Duración (horas)"';
+            BlankNumbers = BlankZero;
         }
         field(5; Price; Decimal)
         {
             Caption = 'Price', Comment = 'ESP="Precio"';
+            BlankNumbers = BlankZero;
         }
         field(6; "Type Option"; Option)
         {

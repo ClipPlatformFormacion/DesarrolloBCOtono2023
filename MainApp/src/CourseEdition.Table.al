@@ -21,6 +21,7 @@ table 50102 "CLIP Course Edition"
         field(4; "Max. Students"; Integer)
         {
             Caption = 'Max. Students', Comment = 'ESP="Nº máx. alumnos"';
+            BlankNumbers = BlankZero;
         }
         field(5; "Sales (Qty.)"; Decimal)
         {
@@ -30,6 +31,8 @@ table 50102 "CLIP Course Edition"
                                                                 "Course No." = field("Course No."),
                                                                 "Course Edition" = field(Edition)
                                                                 ));
+            Editable = false;
+            BlankNumbers = BlankZero;
         }
     }
 
