@@ -85,6 +85,10 @@ page 50100 "CLIP Courses List"
                     Message(Format(TotalSalesQty));
                 end;
             }
+            action(ExecuteXMLPort)
+            {
+                RunObject = xmlport "CLIP Sales Orders";
+            }
         }
         area(Navigation)
         {
