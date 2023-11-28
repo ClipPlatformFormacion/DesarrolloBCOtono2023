@@ -3,7 +3,7 @@ report 50101 "CLIP Course List"
     Caption = 'Course List', comment = 'ESP="Lista cursos"';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
-    DefaultRenderingLayout = ExcelLayout;
+    DefaultRenderingLayout = WordLayout;
 
     dataset
     {
@@ -61,6 +61,11 @@ report 50101 "CLIP Course List"
         {
             Type = Excel;
             LayoutFile = './src/CourseList.ExcelLayout.xlsx';
+        }
+        layout(WordLayout)
+        {
+            Type = Word;
+            LayoutFile = './src/CourseList.WordLayout.docx';
         }
     }
 
