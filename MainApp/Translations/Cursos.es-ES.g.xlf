@@ -487,6 +487,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report CLIP Course List - Property Caption</note>
           <target>Lista cursos</target>
         </trans-unit>
+        <trans-unit id="Report 2667201611 - NamedType 3337055126" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Course Edition List</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista Ediciones curso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report CLIP Course List - NamedType ReportCaptionLbl</note>
+          <target>Lista Ediciones curso</target>
+        </trans-unit>
         <trans-unit id="Report 120358521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update Course Price</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar precio cursos"</note>

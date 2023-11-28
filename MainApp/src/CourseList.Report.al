@@ -9,18 +9,25 @@ report 50101 "CLIP Course List"
     {
         dataitem(Course; "CLIP Course")
         {
-            column(CourseNo; "No.") { }
-            column(CourseName; Name) { }
-            column(CourseLanguageCode; "Language Code") { }
+            PrintOnlyIfDetail = true;
+#pragma warning disable AL0254 
+            DataItemTableView = sorting("Duration (hours)") order(descending);
+#pragma warning restore
+            column(ReportCaption; ReportCaptionLbl) { }
+            column(CompanyName; COMPANYPROPERTY.DisplayName()) { }
+            column(ReportFilters; Course.TableCaption() + ': ' + CourseFilter) { }
+            column(CourseNo; "No.") { IncludeCaption = true; }
+            column(CourseName; Name) { IncludeCaption = true; }
+            column(CourseLanguageCode; "Language Code") { IncludeCaption = true; }
 
             dataitem(CourseEdition; "CLIP Course Edition")
             {
                 DataItemLinkReference = Course;
                 DataItemLink = "Course No." = field("No.");
 
-                column(CourseEditionCode; Edition) { }
-                column(EditionMaxStudents; "Max. Students") { }
-                column(EditionSalesQty; "Sales (Qty.)") { }
+                column(CourseEditionCode; Edition) { IncludeCaption = true; }
+                column(EditionMaxStudents; "Max. Students") { IncludeCaption = true; }
+                column(EditionSalesQty; "Sales (Qty.)") { IncludeCaption = true; }
             }
         }
     }
@@ -51,4 +58,15 @@ report 50101 "CLIP Course List"
             LayoutFile = './src/CourseList.MiLayoutPorDefecto.rdl';
         }
     }
+
+    trigger OnPreReport()
+    var
+        FormatDocument: Codeunit "Format Document";
+    begin
+        CourseFilter := FormatDocument.GetRecordFiltersWithCaptions(Course);
+    end;
+
+    var
+        ReportCaptionLbl: Label 'Course Edition List', Comment = 'ESP="Lista Ediciones curso"';
+        CourseFilter: Text;
 }
