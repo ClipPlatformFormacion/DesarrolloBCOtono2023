@@ -413,6 +413,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ediciones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CLIP Courses List - Action Editions - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1407497502 - Action 1916069359 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Execute Query</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ejecutar Query"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CLIP Courses List - Action ExecuteQuery - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1407497502 - Action 1054706681 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update prices</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar precios"</note>

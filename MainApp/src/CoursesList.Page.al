@@ -64,6 +64,27 @@ page 50100 "CLIP Courses List"
                 RunObject = report "CLIP Update Course Price";
                 Image = UpdateUnitCost;
             }
+            action(ExecuteQuery)
+            {
+                Caption = 'Execute Query', comment = 'ESP="Ejecutar Query"';
+                Image = ExecuteBatch;
+
+                trigger OnAction()
+                var
+                    CourseQuery: Query "CLIP Courses";
+                    TotalSalesQty: Decimal;
+                begin
+                    // CourseQuery.SetRange(No_, Rec."No.");
+                    CourseQuery.SetFilter(Language_Code, '<>%1', '');
+                    CourseQuery.Open();
+
+                    while CourseQuery.Read() do
+                        TotalSalesQty += CourseQuery.Sales__Qty__;
+
+                    CourseQuery.Close();
+                    Message(Format(TotalSalesQty));
+                end;
+            }
         }
         area(Navigation)
         {
