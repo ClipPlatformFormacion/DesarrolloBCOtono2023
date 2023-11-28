@@ -3,7 +3,7 @@ report 50101 "CLIP Course List"
     Caption = 'Course List', comment = 'ESP="Lista cursos"';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
-    DefaultRenderingLayout = MiLayoutPorDefecto;
+    DefaultRenderingLayout = ExcelLayout;
 
     dataset
     {
@@ -56,6 +56,11 @@ report 50101 "CLIP Course List"
         {
             Type = RDLC;
             LayoutFile = './src/CourseList.MiLayoutPorDefecto.rdl';
+        }
+        layout(ExcelLayout)
+        {
+            Type = Excel;
+            LayoutFile = './src/CourseList.ExcelLayout.xlsx';
         }
     }
 
