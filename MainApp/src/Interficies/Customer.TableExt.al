@@ -15,27 +15,11 @@ tableextension 50107 "CLIP Customer" extends Customer
 
             trigger OnValidate()
             var
-                UnknownLevelLbl: Label 'Unknown Level %1', Comment = 'ESP="Nivel desconodico %1"';
-                Handled: Boolean;
+                CustomerLevel: Interface "CLIP Customer Level";
             begin
-                case Rec."CLIP Level" of
-                    "CLIP Customer Level"::" ":
-                        Rec.Validate("CLIP Discount", 0);
-                    "CLIP Customer Level"::Bronze:
-                        Rec.Validate("CLIP Discount", 5);
-                    "CLIP Customer Level"::Silver:
-                        Rec.Validate("CLIP Discount", 10);
-                    else
-                        "CLIP OnValidateCustomerLevelOnBeforeUnknownLevelValue"(Rec, Handled);
-                        if not Handled then
-                            Error(UnknownLevelLbl, Rec."CLIP Level");
-                end;
+                CustomerLevel := Rec."CLIP Level";
+                Rec.Validate("CLIP Discount", CustomerLevel.GetDiscount());
             end;
         }
     }
-
-    [IntegrationEvent(false, false)]
-    local procedure "CLIP OnValidateCustomerLevelOnBeforeUnknownLevelValue"(var Customer: Record Customer; var Handled: Boolean)
-    begin
-    end;
 }

@@ -478,11 +478,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nivel"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CLIP Customer - Field CLIP Level - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2281297054 - Field 3097489956 - Method 2126772001 - NamedType 2881166360" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2281297054">
-          <source>Unknown Level %1</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nivel desconodico %1"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CLIP Customer - Field CLIP Level - Method OnValidate - NamedType UnknownLevelLbl</note>
-        </trans-unit>
         <trans-unit id="TableExtension 399710922 - Field 346014409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1173465396">
           <source>Course Edition</source>
           <note from="Developer" annotates="general" priority="2">ESP="Edición curso"</note>
