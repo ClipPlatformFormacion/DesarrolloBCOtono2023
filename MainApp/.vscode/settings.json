@@ -11,6 +11,5 @@
     "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
     "CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
     "CRS.RemovePrefixFromFilename": true,
-    "CRS.ObjectNamePrefix": "CLIP ",
     "CRS.ExtensionObjectNamePattern": "<Prefix><BaseName>"
 }

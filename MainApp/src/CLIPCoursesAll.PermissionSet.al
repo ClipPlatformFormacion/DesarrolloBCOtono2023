@@ -1,3 +1,8 @@
+namespace ClipPlatform.Permission;
+
+using ClipPlatform.Course;
+using ClipPlatform.Sales;
+
 permissionset 50100 "CLIP Courses - All"
 {
     Caption = 'Courses - All permissions', Comment = 'ESP="Cursos - Todos los permisos"';
@@ -19,5 +24,15 @@ permissionset 50100 "CLIP Courses - All"
         codeunit "CLIP Course Sales Management" = X,
         table "CLIP Course Journal Line" = X,
         tabledata "CLIP Course Journal Line" = RMID,
-        page "CLIP Course Ledger Entries" = X;
+        page "CLIP Course Ledger Entries" = X,
+        table Language = X,
+        tabledata Language = RMID,
+        codeunit "CLIP Blank Customer Level" = X,
+        codeunit "CLIP Bronze Customer Level" = X,
+        codeunit "CLIP Course Journal-Post Line" = X,
+        codeunit "CLIP Silver Customer Level" = X,
+        query "CLIP Courses" = X,
+        report "CLIP Course List" = X,
+        report "CLIP Update Course Price" = X,
+        xmlport "CLIP Sales Orders" = X;
 }

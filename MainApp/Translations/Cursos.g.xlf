@@ -68,6 +68,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Grupo contable IVA prod."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CLIP Course - Field VAT Prod. Posting Group - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PermissionSet 1137289184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Courses - All permissions</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cursos - Todos los permisos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet CLIP Courses - All - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4093990710 - Field 1296262074 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>MyField</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Language - Field MyField - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 346014409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Course Edition</source>
           <note from="Developer" annotates="general" priority="2">ESP="Edición curso"</note>
@@ -542,11 +552,6 @@
           <source>Course</source>
           <note from="Developer" annotates="general" priority="2">ESP="Curso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension CLIP Sales Line Type - EnumValue CLIP Course - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PermissionSet 1137289184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Courses - All permissions</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Cursos - Todos los permisos"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet CLIP Courses - All - Property Caption</note>
         </trans-unit>
       </group>
     </body>
