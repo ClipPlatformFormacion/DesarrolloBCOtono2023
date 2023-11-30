@@ -25,7 +25,7 @@ tableextension 50107 "CLIP Customer" extends Customer
                     "CLIP Customer Level"::Silver:
                         Rec.Validate("CLIP Discount", 10);
                     else
-                        Error(UnknownLevelLbl);
+                        Error(UnknownLevelLbl, Rec."CLIP Level");
                 end;
             end;
         }
