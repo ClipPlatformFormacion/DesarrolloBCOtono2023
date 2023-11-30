@@ -1,3 +1,9 @@
+namespace ClipPlatform.Course;
+
+using Microsoft.Foundation.NoSeries;
+using Microsoft.Finance.GeneralLedger.Setup;
+using Microsoft.Finance.VAT.Setup;
+
 table 50100 "CLIP Course"
 {
     Caption = 'Course', Comment = 'ESP="Curso"';
@@ -58,7 +64,7 @@ table 50100 "CLIP Course"
         field(8; "Language Code"; Code[10])
         {
             Caption = 'Language Code', Comment = 'ESP="Cód. idioma"';
-            TableRelation = Language;
+            TableRelation = System.Globalization.Language;
         }
         field(56; "No. Series"; Code[20])
         {
