@@ -16,6 +16,7 @@ tableextension 50107 "CLIP Customer" extends Customer
             trigger OnValidate()
             var
                 UnknownLevelLbl: Label 'Unknown Level %1', Comment = 'ESP="Nivel desconodico %1"';
+                Handled: Boolean;
             begin
                 case Rec."CLIP Level" of
                     "CLIP Customer Level"::" ":
@@ -25,9 +26,16 @@ tableextension 50107 "CLIP Customer" extends Customer
                     "CLIP Customer Level"::Silver:
                         Rec.Validate("CLIP Discount", 10);
                     else
-                        Error(UnknownLevelLbl, Rec."CLIP Level");
+                        "CLIP OnValidateCustomerLevelOnBeforeUnknownLevelValue"(Rec, Handled);
+                        if not Handled then
+                            Error(UnknownLevelLbl, Rec."CLIP Level");
                 end;
             end;
         }
     }
+
+    [IntegrationEvent(false, false)]
+    local procedure "CLIP OnValidateCustomerLevelOnBeforeUnknownLevelValue"(var Customer: Record Customer; var Handled: Boolean)
+    begin
+    end;
 }
